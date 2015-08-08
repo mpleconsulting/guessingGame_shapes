@@ -116,9 +116,43 @@ buttonBegin.onclick = function () {
 	//begin interaction with the player
 	instructions.innerHTML = "How many " + shape + " do you see... " + chances + " chance(s) <br> Input your answer in the box below";
 
-	//display guess box
+	//display input guess box
 	document.getElementById("inputField").style.display = "inline-block";
 
+}
+
+//function verify if the player's guess is correct
+function verifier(playerGuess) {
+	console.log(chances);
+	console.log(playerGuess === shapeAmount);
+  if (chances > 0 && playerGuess !== shapeAmount) {
+    console.log('hi');
+    console.log(chances);
+    if (playerGuess < shapeAmount) {
+      instructions.innerHTML = "Higher. Guess " + shape + " again... " + chances + " chance(s)";
+      var playerGuess = parseInt(inputField.value, 10);
+    }
+    if (playerGuess > shapeAmount) {
+      instructions.innerHTML = "Lower. Guess " + shape + " again... " + chances + " chance(s)";
+      var playerGuess = parseInt(inputField.value, 10);
+    }
+  }
+  if (chances === 0 && playerGuess !== shapeAmount) {
+    instructions.innerHTML = "The number of " + shape + " equals " + shapeAmount + ". Game over " + name;
+    restart();
+  }
+  if (playerGuess === shapeAmount) {
+    instructions.innerHTML = "Fantastic! You guessed it!";
+    restart();
+  }
+}
+
+function restart() {
+	//hide input guess box
+	document.getElementById("inputField").style.display = "none";
+
+	//display input guess box
+	document.getElementById("buttonRestart").style.display = "inline-block";
 }
 
 //inputField function
@@ -132,42 +166,12 @@ inputField.onkeypress = function (event) {
 		verifier(playerGuess);
 		console.log(playerGuess === shapeAmount);
 
-		//function verify if the player's guess is correct
-		function verifier(playerGuess) {
-			console.log(chances);
-			console.log(playerGuess === shapeAmount);
-		  if (chances > 0 && playerGuess !== shapeAmount) {
-		    console.log('hi');
-		    console.log(chances);
-		    if (playerGuess < shapeAmount) {
-		      instructions.innerHTML = "Higher. Guess " + shape + " again... " + chances + " chance(s)";
-		      var playerGuess = parseInt(inputField.value, 10);
-		    }
-		    if (playerGuess > shapeAmount) {
-		      instructions.innerHTML = "Lower. Guess " + shape + " again... " + chances + " chance(s)";
-		      var playerGuess = parseInt(inputField.value, 10);
-		    }
-		  }
-		  if (chances === 0 && playerGuess !== shapeAmount) {
-		    instructions.innerHTML = "The number of " + shape + " equals " + shapeAmount + ". Game over " + name;
-		  }
-		  if (playerGuess === shapeAmount) {
-		    instructions.innerHTML = "Fantastic! You guessed it!";
-		  }
-		}
-
 		inputField.value = '';
     return false;
   }
   else return true;
 
-
-	// //hide guess box
-	// document.getElementById("inputField").style.display = "none";
-
-	// //display guess box
-	// document.getElementById("buttonRestart").style.display = "inline-block";
-
 }
+
 
 
