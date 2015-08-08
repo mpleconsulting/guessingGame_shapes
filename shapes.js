@@ -136,7 +136,7 @@ inputField.onkeypress = function (event) {
 		function verifier(playerGuess) {
 			console.log(chances);
 			console.log(playerGuess === shapeAmount);
-		  while (chances > 0 && playerGuess !== shapeAmount) {
+		  if (chances > 0 && playerGuess !== shapeAmount) {
 		    console.log('hi');
 		    console.log(chances);
 		    if (playerGuess < shapeAmount) {
@@ -147,7 +147,6 @@ inputField.onkeypress = function (event) {
 		      instructions.innerHTML = "Lower. Guess " + shape + " again... " + chances + " chance(s)";
 		      var playerGuess = parseInt(inputField.value, 10);
 		    }
-		    chances--;
 		  }
 		  if (chances === 0 && playerGuess !== shapeAmount) {
 		    instructions.innerHTML = "The number of " + shape + " equals " + shapeAmount + ". Game over " + name;
