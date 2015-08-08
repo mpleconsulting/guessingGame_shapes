@@ -4,7 +4,7 @@ var instructions = document.getElementById('instructions');
 var container = document.getElementById('container');
 var buttonBegin = document.getElementById('buttonBegin');
 var inputField = document.getElementById('inputField');
-var playerGuess = parseInt(inputField.value);
+var playerGuess = parseInt(inputField.value, 10);
 var chances = 3;
 
 
@@ -22,7 +22,7 @@ buttonBegin.onclick = function () {
 	var randShapeType = randNum(2);
 	var randNumCircles = randNum(10);
 	var randNumSquares = randNum(10);
-	
+
 	//function generate arrays to define shape type through classes
 	var arrayCircles = [];
 	var arraySquares = [];
@@ -65,31 +65,31 @@ buttonBegin.onclick = function () {
 			switch(colorType) {
 				case(1):
 					div.className += " gray1";
-					break; 
+					break;
 				case(2):
 					div.className += " gray2";
-					break; 
+					break;
 				case(3):
 					div.className += " green1";
 					break;
 				case(4):
 					div.className += " green2";
-					break;  
+					break;
 				case(5):
 					div.className += " red1";
 					break;
 				case(6):
 					div.className += " blue1";
-					break;  
+					break;
 				case(7):
 					div.className += " blue2";
 					break;
 				case(8):
 					div.className += " purple";
-					break;  
+					break;
 				case(9):
 					div.className += " yellow";
-					break; 
+					break;
 				case(10):
 					div.className += " orange";
 					break;
@@ -104,7 +104,7 @@ buttonBegin.onclick = function () {
 	//determine the shape to question player
 	if (randShapeType === 1) {
 		shape = "circles";
-		shapeAmount = randNumCircles; 
+		shapeAmount = randNumCircles;
 	} else {
 		shape = "squares";
 		shapeAmount = randNumSquares;
@@ -124,7 +124,7 @@ buttonBegin.onclick = function () {
 //inputField function
 inputField.onkeypress = function (event) {
   if (event.which == 13 || event.keyCode == 13) {
-	
+
 		playerGuess = parseInt(inputField.value);
 
 		//begin interactive guessing game
@@ -141,11 +141,11 @@ inputField.onkeypress = function (event) {
 		    console.log(chances);
 		    if (playerGuess < shapeAmount) {
 		      instructions.innerHTML = "Higher. Guess " + shape + " again... " + chances + " chance(s)";
-		      var playerGuess = parseInt(inputField.value);
-		    } 
+		      var playerGuess = parseInt(inputField.value, 10);
+		    }
 		    if (playerGuess > shapeAmount) {
 		      instructions.innerHTML = "Lower. Guess " + shape + " again... " + chances + " chance(s)";
-		      var playerGuess = parseInt(inputField.value);
+		      var playerGuess = parseInt(inputField.value, 10);
 		    }
 		    chances--;
 		  }
