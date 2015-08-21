@@ -20,8 +20,8 @@ buttonBegin.onclick = function() {
     }
 
     var randShapeType = randNum(2);
-    var randNumCircles = randNum(10);
-    var randNumSquares = randNum(10);
+    var randNumCircles = randNum(11);
+    var randNumSquares = randNum(11);
 
     //function generate arrays to define shape type through classes
     var arrayCircles = [];
